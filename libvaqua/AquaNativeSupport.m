@@ -2101,7 +2101,7 @@ JNIEXPORT jint JNICALL Java_org_violetlib_aqua_AquaSheetSupport_nativeDisplayAsS
     NSWindow *no = (NSWindow *) owner_wptr;
 
     runOnMainThread(^() {
-        [no beginSheet:w completionHandler:^(NSModalResponse r){NSLog(@"Modal sheet session terminated");}];
+        [no beginSheet:w completionHandler:nil];
     });
     result = 0;
 
