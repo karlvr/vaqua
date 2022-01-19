@@ -412,7 +412,7 @@
 
         <unjar overwrite="false" dest="${uber-classesdir}" src="${dep.org.violetlib:vappearances:jar}"/>
         <unjar overwrite="false" dest="${uber-classesdir}" src="${dep.org.violetlib:jnr:jar}"/>
-        <unjar overwrite="false" dest="${uber-classesdir}" src="${dep.com.sun.activation:javax.activation:jar}"/>
+        <!-- <unjar overwrite="false" dest="${uber-classesdir}" src="${dep.com.sun.activation:javax.activation:jar}"/> -->
     </target>
 
     <target name="uber-VAqua" depends="createUberJAR">
