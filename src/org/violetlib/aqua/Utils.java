@@ -9,6 +9,8 @@
 package org.violetlib.aqua;
 
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -19,20 +21,21 @@ import org.jetbrains.annotations.NotNull;
 public class Utils {
 
     private static final int javaVersion = obtainJavaVersion();
+    private static final Logger LOG = Logger.getLogger("org.violetlib.aqua");
 
     private Utils() {
     }
 
     public static void logError(@NotNull String message) {
-        System.err.println(message);
+        LOG.log(Level.SEVERE, message);
     }
 
     public static void logError(@NotNull String message, @NotNull Throwable th) {
-        System.err.println(message + ": " + th);
+        LOG.log(Level.SEVERE, message, th);
     }
 
     public static void logDebug(@NotNull String message) {
-        System.err.println(message);
+        LOG.log(Level.FINE, message);
     }
 
     public static int getJavaVersion() {
