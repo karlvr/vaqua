@@ -418,8 +418,8 @@
     <target name="uber-VAqua" depends="createUberJAR">
         <echo level="info" message="Building VAqua ${fullReleaseName} uber-JAR"/>
         <mkdir dir="${distdir}"/>
-        <jar jarfile="${distdir}/VAqua.jar" basedir="${uber-classesdir}">
-            <fileset dir="${jnidir}/"/>
+        <jar jarfile="${distdir}/VAqua.jar" basedir="${uber-classesdir}" excludes="*.dylib">
+            <!-- <fileset dir="${jnidir}/"/> -->
         </jar>
     </target>
 
