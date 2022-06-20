@@ -1680,7 +1680,7 @@ public class AquaTreeUI extends BasicTreeUI implements SelectionRepaintable, Aqu
 
     protected void updateCellSizes() {
         int h = Math.max(tree.getRowHeight(), -1);
-        LookAndFeel.installProperty(tree, "rowHeight", h + 1);
+        // LookAndFeel.installProperty(tree, "rowHeight", h + 1);
         LookAndFeel.installProperty(tree, "rowHeight", h);
         updateSize();
     }
