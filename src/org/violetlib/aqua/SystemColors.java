@@ -65,6 +65,11 @@ public class SystemColors {
         colors.add("bottomTexturedWindowMarginBackground", "texturedWindowBackground");
         colors.add("bottomTexturedWindowMarginBackground_disabled", "texturedWindowBackground_disabled");
 
+        colors.add("topVibrantTexturedWindowMarginBackground", "topTexturedWindowMarginBackground");
+        colors.add("topVibrantTexturedWindowMarginBackground_disabled", "topTexturedWindowMarginBackground_disabled");
+        colors.add("bottomVibrantTexturedWindowMarginBackground", "bottomTexturedWindowMarginBackground");
+        colors.add("bottomVibrantTexturedWindowMarginBackground_disabled", "bottomTexturedWindowMarginBackground_disabled");
+
         colors.add("topWindowDivider", "separator");
         colors.add("topWindowDivider_disabled", "separator_disabled");
         colors.add("bottomWindowDivider", "separator");
@@ -389,10 +394,17 @@ public class SystemColors {
             colors.addAlphaGradient("bottomWindowMarginBackground", 0, 0, 24);
         }
 
+        colors.addAlphaGradient("topVibrantTexturedWindowMarginBackground", 255, 190, 190);
+        colors.addAlphaGradient("bottomVibrantTexturedWindowMarginBackground", 255, 190, 190);
+        colors.addAlphaGradient("topVibrantWindowMarginBackground", 0, 36, 36);
+        colors.addAlphaGradient("bottomVibrantWindowMarginBackground", 0, 24, 24);
+
         colors.add("topWindowMarginBackground_disabled", 246);
         colors.add("bottomWindowMarginBackground_disabled", 246);
         colors.add("topTexturedWindowBackground_disabled", 246);
         colors.add("bottomTexturedWindowBackground_disabled", 246);
+        colors.add("topVibrantTexturedWindowBackground_disabled", 246);
+        colors.add("bottomVibrantTexturedWindowBackground_disabled", 246);
 
         if (OSVersion < 1014) {
             colors.add("topWindowDivider", 0, 36);
@@ -800,6 +812,13 @@ public class SystemColors {
         colors.add("topWindowMarginBackground_disabled", new TintedEraser(32, 64));
         // using translucent colors will reveal a vibrant background, which is incorrect for the bottom margin
         colors.addColorGradient("bottomWindowMarginBackground", 50, 40, 255);
+
+        colors.add("topVibrantTexturedWindowMarginBackground", "topTexturedWindowMarginBackground");
+        colors.add("topVibrantTexturedWindowMarginBackground_disabled", "topTexturedWindowMarginBackground_disabled");
+        colors.add("bottomVibrantTexturedWindowMarginBackground", "bottomTexturedWindowMarginBackground");
+        colors.add("topVibrantWindowMarginBackground", "topWindowMarginBackground");
+        colors.add("topVibrantWindowMarginBackground_disabled", "topWindowMarginBackground_disabled");
+        colors.add("bottomVibrantWindowMarginBackground", "bottomWindowMarginBackground");
 
         colors.add("topWindowDivider_disabled", 55);  // flat divider over vibrant background
 
