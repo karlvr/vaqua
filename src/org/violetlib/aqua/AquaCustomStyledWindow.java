@@ -453,13 +453,14 @@ public class AquaCustomStyledWindow {
             try {
                 boolean isActive = AquaFocusHandler.isActive(rp);
                 boolean isSheet = AquaSheetSupport.isSheet(rp);
+                boolean isVibrant = AquaVibrantSupport.isVibrant(rp);
 
                 Color c;
 
                 if (isSheet) {
                     c = AquaColors.CLEAR;
                 } else {
-                    c = AquaUtils.getWindowMarginBackground(rp, isTop);
+                    c = AquaUtils.getWindowMarginBackground(rp, isTop, isVibrant);
                 }
 
                 AquaUtils.fillRect(g, c, 0, y, rp.getWidth(), height);

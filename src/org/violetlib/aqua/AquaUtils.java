@@ -1166,13 +1166,16 @@ final public class AquaUtils {
      * @param isTop True for the top margin, false for the bottom margin.
      * @return the color.
      */
-    public static @NotNull Color getWindowMarginBackground(@NotNull JRootPane rp, boolean isTop) {
+    public static @NotNull Color getWindowMarginBackground(@NotNull JRootPane rp, boolean isTop, boolean isVibrant) {
         // In most cases, the margin color when flat matches the content area color.
         // One exception is a non-textured window in light mode.
         // The other is a dark mode non-textured unified title/tool bar (top margin).
 
         String base = isTextured(rp) ? "TexturedWindowMarginBackground" : "WindowMarginBackground";
         String prefix = isTop ? "top" : "bottom";
+        if (isVibrant) {
+            prefix += "Vibrant";
+        }
         String suffix = AquaFocusHandler.isActive(rp) ? "" : "_disabled";
         String colorName = prefix + base + suffix;
         AquaAppearance appearance = AppearanceManager.getAppearance(rp);
