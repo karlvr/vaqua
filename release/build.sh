@@ -5,6 +5,9 @@ mkdir -p ~/Development/charles/repo/com/xk72/violetlib/VAqua/$version
 mkdir -p ~/.m2/repository/com/xk72/violetlib/VAqua/$version
 cp dist/VAqua.jar ~/Development/charles/repo/com/xk72/violetlib/VAqua/$version/VAqua-$version.jar
 cp dist/VAqua.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version/VAqua-$version.jar
+if [ -d ~/Development/charles/app/build/macos/assembly/openjdk/Charles.app/Contents/Java ]; then
+  cp dist/VAqua.jar ~/Development/charles/app/build/macos/assembly/openjdk/Charles.app/Contents/Java/VAqua-$version.jar
+fi
 (cd ../src && jar cf ../release/VAqua-$version-sources.jar .)
 cp VAqua-$version-sources.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version/
 codesign out/jni/*.dylib out/uber-classes/*.dylib -s "Developer ID Application: XK72 Limited"
