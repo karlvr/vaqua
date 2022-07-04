@@ -1,6 +1,8 @@
 #!/bin/zsh -eu
 
 ant -DRELEASE=$version -Ddebug=true
+mkdir -p ~/Development/charles/repo/com/xk72/violetlib/VAqua/$version
+mkdir -p ~/.m2/repository/com/xk72/violetlib/VAqua/$version
 cp dist/VAqua.jar ~/Development/charles/repo/com/xk72/violetlib/VAqua/$version/VAqua-$version.jar
 cp dist/VAqua.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version/VAqua-$version.jar
 (cd ../src && jar cf ../release/VAqua-$version-sources.jar .)
