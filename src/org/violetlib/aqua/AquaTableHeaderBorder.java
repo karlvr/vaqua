@@ -88,7 +88,18 @@ public class AquaTableHeaderBorder extends AbstractBorder {
         State state = getState(jc);
         boolean isFocused = jc.hasFocus();
         AquaUIPainter.UILayoutDirection ld = AquaUtils.getLayoutDirection(owner);
+        if (jc instanceof JLabel && ((JLabel)jc).getHorizontalAlignment() == SwingUtilities.RIGHT) {
+            ld = invertLayoutDirection(ld);
+        }
         return new TableColumnHeaderConfiguration(state, sortArrowDirection, false, isFocused, ld);
+    }
+
+    private AquaUIPainter.UILayoutDirection invertLayoutDirection(AquaUIPainter.UILayoutDirection direction) {
+        if (direction == AquaUIPainter.UILayoutDirection.LEFT_TO_RIGHT) {
+            return AquaUIPainter.UILayoutDirection.RIGHT_TO_LEFT;
+        } else {
+            return AquaUIPainter.UILayoutDirection.LEFT_TO_RIGHT;
+        }
     }
 
     protected State getState(JComponent jc) {
@@ -106,7 +117,7 @@ public class AquaTableHeaderBorder extends AbstractBorder {
     public Insets getBorderInsets(Component c) {
         // bad to create new one each time. For debugging only.
         configureInsets();
-        return AquaUtils.isLeftToRight(owner) ? editorInsetsLTR : editorInsetsRTL;
+        return AquaUtils.isLeftToRight(owner) == (c instanceof JLabel && ((JLabel)c).getHorizontalAlignment() != SwingConstants.RIGHT) ? editorInsetsLTR : editorInsetsRTL;
     }
 
     @Override
