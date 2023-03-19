@@ -69,11 +69,14 @@ public class WindowDraggingMouseListener extends MouseInputAdapter {
     @Override
     public void mouseDragged(MouseEvent e) {
         if (w != null) {
-            Point p = MouseInfo.getPointerInfo().getLocation();
-            int x = p.x - xOffset;
-            int y = p.y - yOffset;
-            w.setLocation(x, y);
-            e.consume();
+            PointerInfo pointerInfo = MouseInfo.getPointerInfo();
+            if (pointerInfo != null) {
+                Point p = pointerInfo.getLocation();
+                int x = p.x - xOffset;
+                int y = p.y - yOffset;
+                w.setLocation(x, y);
+                e.consume();
+            }
         }
     }
 
