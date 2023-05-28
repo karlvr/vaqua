@@ -38,6 +38,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.reflect.InvocationTargetException;
 import java.util.EventObject;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -965,6 +966,11 @@ public class AquaTableUI extends BasicTableUI
                     return super.stopCellEditing();
                 }
                 value = constructor.newInstance(s);
+             } catch (InvocationTargetException e) {
+                return false;
+            } catch (ReflectiveOperationException e) {
+                /* Catch other reflection exceptions as they mean reflection itself failed, which should be reported */
+                throw new IllegalStateException("Failed to use reflection to call " + constructor, e);
             } catch (Exception e) {
                 return false;
             }
