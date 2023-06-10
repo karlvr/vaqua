@@ -1,5 +1,12 @@
 #!/bin/zsh -eu
 
+version="${1:-}"
+
+if [ -z "$version" ]; then
+  echo "usage: $0 <version>" >&2
+  exit 1
+fi
+
 ant -DRELEASE=$version -Ddebug=true
 mkdir -p ~/Development/charles/repo/com/xk72/violetlib/VAqua/$version
 mkdir -p ~/.m2/repository/com/xk72/violetlib/VAqua/$version
