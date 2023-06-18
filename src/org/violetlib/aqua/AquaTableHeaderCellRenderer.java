@@ -60,10 +60,10 @@ public class AquaTableHeaderCellRenderer extends DefaultTableCellRenderer implem
 
         setText((value == null) ? "" : value.toString());
 
-        AquaTableHeaderBorder cellBorder = AquaTableHeaderBorder.getListHeaderBorder();
-        cellBorder.setOwner(table);
-        cellBorder.setSortArrowDirection(sortDirection);
-        setBorder(cellBorder);
+        // AquaTableHeaderBorder cellBorder = AquaTableHeaderBorder.getListHeaderBorder();
+        // cellBorder.setOwner(table);
+        // cellBorder.setSortArrowDirection(sortDirection);
+        // setBorder(cellBorder);
         return this;
     }
 
