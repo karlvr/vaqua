@@ -309,6 +309,18 @@ public class AquaTableHeaderUI extends BasicTableHeaderUI implements AquaCompone
             rendererPane.paintComponent(g, rendererComponent, header, cellRect.x + intercellSpacing.width / 2, cellRect.y,
                     cellRect.width - intercellSpacing.width, cellRect.height, true);
 
+            // if (separatorColor != null && header.getTable().getShowVerticalLines()) {
+            //     AquaTableUI ui = AquaUtils.getUI(header.getTable(), AquaTableUI.class);
+            //     if (ui != null) {
+            //         Color gridColor = ui.colors.getGrid(appearanceContext);
+            //         g.setColor(gridColor);
+            //         g.fillRect(cellRect.x + cellRect.width - 1, cellRect.y + 3, 1, cellRect.height - 6);
+            //     }
+            // }
+            AquaTableHeaderBorder aquaTableHeaderBorder = new AquaTableHeaderBorder();
+            aquaTableHeaderBorder.setOwner(header.getTable());
+            aquaTableHeaderBorder.paintBorder(rendererComponent, g, cellRect.x, cellRect.y, cellRect.width, cellRect.height);
+
             // Setting the foreground or background color of a DefaultTableCellRenderer makes that color the color
             // to use when the cell is not selected. So, if we installed a color, we should also remove it.
             Color fc = rendererComponent.getForeground();
