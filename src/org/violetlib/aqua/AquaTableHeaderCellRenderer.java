@@ -64,6 +64,7 @@ public class AquaTableHeaderCellRenderer extends DefaultTableCellRenderer implem
         // cellBorder.setOwner(table);
         // cellBorder.setSortArrowDirection(sortDirection);
         // setBorder(cellBorder);
+        setBorder(null);
         return this;
     }
 
