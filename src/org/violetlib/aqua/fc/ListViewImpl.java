@@ -299,7 +299,7 @@ public class ListViewImpl extends ListView {
         public Component getTreeTableCellRendererComponent(TreeTable treeTable, Object value, boolean selected, boolean hasFocus, int row, int column, boolean expanded, boolean leaf) {
             AquaAppearance appearance = AppearanceManager.ensureAppearance(treeTable);
             ContainerContextualColors colors = AquaColors.STRIPED_CONTAINER_COLORS;
-            Component c = fileRenderer.getCellRendererComponent(treeTable, appearance, colors, value, selected, hasFocus);
+            Component c = fileRenderer != null ? fileRenderer.getCellRendererComponent(treeTable, appearance, colors, value, selected, hasFocus) : null;
             if (c == null) {
                 c = super.getTreeTableCellRendererComponent(treeTable, value, selected, hasFocus, row, column, expanded, leaf);
             }
