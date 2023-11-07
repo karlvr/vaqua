@@ -16,6 +16,6 @@ if [ -d ~/Development/charles/app/build/macos/assembly/openjdk/Charles.app/Conte
   cp dist/VAqua.jar ~/Development/charles/app/build/macos/assembly/openjdk/Charles.app/Contents/Java/VAqua-$version.jar
 fi
 (cd ../src && jar cf ../release/VAqua-$version-sources.jar .)
-cp VAqua-$version-sources.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version/
+mv VAqua-$version-sources.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version/
 codesign out/jni/*.dylib out/uber-classes/*.dylib -s "Developer ID Application: XK72 Limited"
 rsync -a out/jni/*.dylib out/uber-classes/*.dylib ~/Development/charles/app/assembly/src/main/assembly/macos/lib
