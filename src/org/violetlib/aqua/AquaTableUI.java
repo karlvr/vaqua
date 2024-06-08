@@ -814,6 +814,14 @@ public class AquaTableUI extends BasicTableUI
 
             TableCellRenderer renderer = table.getCellRenderer(row, column);
             Component rendererComponent = table.prepareRenderer(renderer, row, column);
+
+            /* Paint cell background through the cell margins (but not over vertical lines) */
+            if (rendererComponent.getBackground() != null && rendererComponent.isOpaque()) {
+                g.setColor(rendererComponent.getBackground());
+                final int margin = table.getIntercellSpacing().width;
+                g.fillRect(cellRect.x - margin / 2, cellRect.y, cellRect.width + margin - (table.getShowVerticalLines() ? 1 : 0), cellRect.height);
+            }
+            
             rendererPane.paintComponent(g, rendererComponent, table, cellRect.x, cellRect.y,
                     cellRect.width, cellRect.height, true);
         }
