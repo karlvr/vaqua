@@ -8,6 +8,18 @@ if [ -z "$version" ]; then
 fi
 
 ant -DRELEASE=$version -Ddebug=true
+
+# Remove the dylibs from the jar, as I want them separately
+(
+  rm -rf dist/extract
+  mkdir dist/extract
+  cd dist/extract
+  jar xf ../VAqua.jar
+  rm -rf *.dylib.dSYM
+  mv *.dylib ..
+  jar -cf ../VAqua.jar .
+)
+
 mkdir -p ~/Development/charles/repo/com/xk72/violetlib/VAqua/$version
 mkdir -p ~/.m2/repository/com/xk72/violetlib/VAqua/$version
 cp dist/VAqua.jar ~/Development/charles/repo/com/xk72/violetlib/VAqua/$version/VAqua-$version.jar
