@@ -21,7 +21,7 @@
   <use key="org.jetbrains:annotations" version="20.1.0" scope="compile"/>
   <use key="org.violetlib:vappearances" version="4"/>
   <use key="org.violetlib:jnr" version="14"/>
-  <use key="com.sun.activation:javax.activation" version="1.2.0"/>
+  <!-- <use key="com.sun.activation:javax.activation" version="1.2.0"/> -->
 
   <property name="base" location=".."/>
   <property name="src" location="${base}/src"/>
