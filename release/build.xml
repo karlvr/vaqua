@@ -6,7 +6,7 @@
 
   <typedef resource="org/violetlib/vbuilder/ant/antlib.xml"/>
   
-  <property name="jdk8" value="/Library/Java/JavaVirtualMachines/jdk-8.jdk"/>
+  <property name="jdk8" value="/Library/Java/JavaVirtualMachines/zulu-8.jdk"/>
   <property name="bootclasspath8" value="${jdk8}/Contents/Home/jre/lib/rt.jar"/>
 
   <property name="RELEASE" value="13"/>
