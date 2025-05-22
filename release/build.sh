@@ -33,4 +33,5 @@ mv VAqua-$version-sources.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version
 
 # Sign and copy across the .dylibs
 codesign dist/*.dylib -s "Developer ID Application: XK72 Limited"
+rsync -a dist/*.dylib ~/Development/charles/repo/com/xk72/violetlib/VAqua/$version/
 rsync -a dist/*.dylib ~/Development/charles/app/assembly/src/main/assembly/macos/lib
