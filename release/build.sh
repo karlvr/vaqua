@@ -7,6 +7,7 @@ if [ -z "$version" ]; then
   exit 1
 fi
 
+ant clean
 ant -DRELEASE=$version -Ddebug=true
 
 # Remove the dylibs from the jar, as I want them separately
@@ -29,5 +30,7 @@ if [ -d ~/Development/charles/app/build/macos/assembly/openjdk/Charles.app/Conte
 fi
 (cd ../src && jar cf ../release/VAqua-$version-sources.jar .)
 mv VAqua-$version-sources.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version/
-codesign out/jni/*.dylib out/uber-classes/*.dylib -s "Developer ID Application: XK72 Limited"
-rsync -a out/jni/*.dylib out/uber-classes/*.dylib ~/Development/charles/app/assembly/src/main/assembly/macos/lib
+
+# Sign and copy across the .dylibs
+codesign dist/*.dylib -s "Developer ID Application: XK72 Limited"
+rsync -a dist/*.dylib ~/Development/charles/app/assembly/src/main/assembly/macos/lib
