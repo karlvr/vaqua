@@ -981,9 +981,9 @@ public class AquaTableUI extends BasicTableUI
 
             rendererPane.paintComponent(g, rendererComponent, table, cellRect.x, cellRect.y,
               cellRect.width, cellRect.height, true);
-            if (!AquaColors.isPriority(table.getSelectionBackground())) {
-                table.setSelectionBackground(null);
-            }
+            // if (!AquaColors.isPriority(table.getSelectionBackground())) {
+            //     table.setSelectionBackground(null);
+            // }
         }
 
         protected Component getRendererComponent(TableCellRenderer renderer, int row, int column,
@@ -998,19 +998,19 @@ public class AquaTableUI extends BasicTableUI
                 hasFocus = (rowIsLead && colIsLead) && table.isFocusOwner();
             }
 
-            if (!AquaColors.isPriority(table.getSelectionBackground())) {
-                Color c = AquaColors.CLEAR;
-                if (isDropTarget) {
-                    c = colors.getBackground(appearanceContext.withState(ACTIVE_DEFAULT).withSelected(true));
-                } else if (isSelected) {
-                    if (appearanceContext.getState() == ACTIVE_DEFAULT && isSelectionMuted) {
-                        c = colors.getBackground(appearanceContext.withState(ACTIVE).withSelected(true));
-                    } else {
-                        c = colors.getBackground(appearanceContext.withSelected(true));
-                    }
-                }
-                table.setSelectionBackground(c);
-            }
+            // if (!AquaColors.isPriority(table.getSelectionBackground())) {
+            //     Color c = AquaColors.CLEAR;
+            //     if (isDropTarget) {
+            //         c = colors.getBackground(appearanceContext.withState(ACTIVE_DEFAULT).withSelected(true));
+            //     } else if (isSelected) {
+            //         if (appearanceContext.getState() == ACTIVE_DEFAULT && isSelectionMuted) {
+            //             c = colors.getBackground(appearanceContext.withState(ACTIVE).withSelected(true));
+            //         } else {
+            //             c = colors.getBackground(appearanceContext.withSelected(true));
+            //         }
+            //     }
+            //     table.setSelectionBackground(c);
+            // }
 
             return renderer.getTableCellRendererComponent(table, table.getValueAt(row, column),
               isSelected, hasFocus, row, column);
