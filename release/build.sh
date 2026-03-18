@@ -1,14 +1,20 @@
 #!/bin/zsh -eu
 
 version="${1:-}"
+vappearances_version="${2:-}"
+jnr_version="${3:-}"
 
-if [ -z "$version" ]; then
-  echo "usage: $0 <version>" >&2
+if [ -z "$version" -o -z "$vappearances_version" -o -z "$jnr_version" ]; then
+  echo "usage: $0 <version> <vappearances_version> <jnr_version>" >&2
   exit 1
 fi
 
 ant clean
-ant -DRELEASE=$version -Ddebug=true
+ant \
+  -DRELEASE=$version \
+  -DVAPPEARANCES_VERSION=$vappearances_version \
+  -DJNR_VERSION=$jnr_version \
+  -Ddebug=true
 
 # Remove the dylibs from the jar, as I want them separately
 (
@@ -28,7 +34,14 @@ cp dist/VAqua.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version/VAqua-$vers
 if [ -d ~/Development/charles/app/build/macos/assembly/openjdk/Charles.app/Contents/Java ]; then
   cp dist/VAqua.jar ~/Development/charles/app/build/macos/assembly/openjdk/Charles.app/Contents/Java/VAqua-$version.jar
 fi
-(cd ../src && jar cf ../release/VAqua-$version-sources.jar .)
+
+# Assemble source
+mkdir -p src
+cp -r ../src/* src
+(cd src && jar xf ~/.m2/repository/org/violetlib/vappearances/$vappearances_version/vappearances-$vappearances_version-sources.jar)
+(cd src && jar xf ~/.m2/repository/org/violetlib/jnr/$jnr_version/jnr-$jnr_version-sources.jar)
+(cd src && jar cf ../VAqua-$version-sources.jar .)
+rm -rf src
 mv VAqua-$version-sources.jar ~/.m2/repository/com/xk72/violetlib/VAqua/$version/
 
 # Sign and copy across the .dylibs
