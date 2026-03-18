@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.violetlib.vappearances.AppearanceSettings;
 import org.violetlib.vappearances.VAppearance;
 
 /**
@@ -46,6 +47,16 @@ public class BasicAquaAppearance implements VAppearance {
     @Override
     public boolean isHighContrast() {
         return appearance.isHighContrast();
+    }
+
+    @Override
+    public boolean isTinted() {
+        return appearance.isTinted();
+    }
+
+    @Override
+    public AppearanceSettings getSettings() {
+        return appearance.getSettings();
     }
 
     @Override
